@@ -12,8 +12,8 @@ import { usePageTitle } from "../hooks/usePageTitle";
 
 export default function LoginPage() {
   usePageTitle("Sign in — CIS");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("auditor@acme.com");
+  const [password, setPassword] = useState("audit2026");
   const [remember, setRemember] = useState(true);
   const [loading, setLoading] = useState(false);
   const { user, login, isLoading } = useAuth();

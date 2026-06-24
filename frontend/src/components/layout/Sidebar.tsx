@@ -49,7 +49,7 @@ export function Sidebar() {
           </div>
           {!collapsed && (
             <div className="min-w-0 leading-tight">
-              <p className="truncate text-sm font-semibold text-foreground">CIS</p>
+              <p className="truncate text-sm font-semibold">CIS</p>
               <p className="truncate text-[11px] text-sidebar-foreground/60">We Make IT Possible</p>
             </div>
           )}
