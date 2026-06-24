@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, useMemo } from "react";
 import { BookOpenCheck, PencilLine, TrendingUp, ShieldAlert } from "lucide-react";
 import { PageHeader } from "@/components/common/PageHeader";
@@ -32,13 +31,10 @@ import {
 import { RiskBadge } from "@/components/common/RiskBadge";
 import { journalService } from "@/services/journalService";
 import type { JournalEntry } from "@/types";
+import { usePageTitle } from "../hooks/usePageTitle";
 
-export const Route = createFileRoute("/_app/journals")({
-  head: () => ({ meta: [{ title: "Journal Entry Controls — CIS" }] }),
-  component: JournalsPage,
-});
-
-function JournalsPage() {
+export default function JournalsPage() {
+  usePageTitle("Journal Entry Controls — CIS");
   const [journals, setJournals] = useState<JournalEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<JournalEntry | null>(null);

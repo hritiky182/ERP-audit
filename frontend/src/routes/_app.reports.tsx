@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { FileDown, FileSpreadsheet, Calendar } from "lucide-react";
 import { PageHeader } from "@/components/common/PageHeader";
 import { Card, CardContent } from "@/components/ui/card";
@@ -8,11 +7,7 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { reportsService } from "@/services/reportsService";
 import { useState } from "react";
-
-export const Route = createFileRoute("/_app/reports")({
-  head: () => ({ meta: [{ title: "Reports — CIS" }] }),
-  component: ReportsPage,
-});
+import { usePageTitle } from "../hooks/usePageTitle";
 
 const reports = [
   {
@@ -52,7 +47,8 @@ const reports = [
   },
 ];
 
-function ReportsPage() {
+export default function ReportsPage() {
+  usePageTitle("Reports — CIS");
   const [exporting, setExporting] = useState<string | null>(null);
 
   const onExport = async (reportId: string, title: string, format: "PDF" | "Excel") => {

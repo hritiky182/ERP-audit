@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, useMemo } from "react";
 import { Building2, AlertTriangle, RefreshCw } from "lucide-react";
 import { PageHeader } from "@/components/common/PageHeader";
@@ -31,13 +30,10 @@ import {
 import { RiskBadge } from "@/components/common/RiskBadge";
 import { vendorService } from "@/services/vendorService";
 import type { Vendor } from "@/types";
+import { usePageTitle } from "../hooks/usePageTitle";
 
-export const Route = createFileRoute("/_app/vendors")({
-  head: () => ({ meta: [{ title: "Vendor Master Controls — CIS" }] }),
-  component: VendorsPage,
-});
-
-function VendorsPage() {
+export default function VendorsPage() {
+  usePageTitle("Vendor Master Controls — CIS");
   const [vendors, setVendors] = useState<Vendor[]>([]);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<Vendor | null>(null);

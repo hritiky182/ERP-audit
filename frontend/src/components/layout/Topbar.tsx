@@ -1,4 +1,4 @@
-import { useNavigate } from "@tanstack/react-router";
+import { useNavigate } from "react-router-dom";
 import { Bell, Moon, Search, Sun, LogOut, User as UserIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -107,7 +107,7 @@ export function Topbar() {
             <DropdownMenuItem
               onClick={async () => {
                 await logout();
-                navigate({ to: "/login" });
+                navigate("/login");
               }}
             >
               <LogOut className="mr-2 h-4 w-4" /> Sign out

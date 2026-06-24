@@ -1,4 +1,4 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link, useLocation } from "react-router-dom";
 import {
   LayoutDashboard,
   UserCog,
@@ -33,7 +33,7 @@ const nav = [
 
 export function Sidebar() {
   const { collapsed, toggle } = useSidebarStore();
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const { pathname } = useLocation();
 
   return (
     <TooltipProvider delayDuration={0}>

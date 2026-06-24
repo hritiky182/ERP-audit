@@ -1,5 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { usePageTitle } from "../hooks/usePageTitle";
 import {
   AlertTriangle,
   CheckCircle2,
@@ -30,11 +30,6 @@ import { RiskBadge } from "@/components/common/RiskBadge";
 import { dashboardService } from "@/services/dashboardService";
 import type { Finding } from "@/types";
 
-export const Route = createFileRoute("/_app/dashboard")({
-  head: () => ({ meta: [{ title: "Executive Dashboard — CIS" }] }),
-  component: DashboardPage,
-});
-
 interface PieData {
   name: string;
   value: number;
@@ -43,9 +38,9 @@ interface PieData {
 
 interface TrendData {
   month: string;
-  High: number;
-  Medium: number;
-  Low: number;
+  high: number;
+  medium: number;
+  low: number;
 }
 
 interface ModuleData {
@@ -53,7 +48,8 @@ interface ModuleData {
   count: number;
 }
 
-function DashboardPage() {
+export default function DashboardPage() {
+  usePageTitle("Executive Dashboard — CIS");
   const [stats, setStats] = useState({ total: 0, high: 0, med: 0, low: 0, open: 0, closed: 0 });
   const [pieData, setPieData] = useState<PieData[]>([]);
   const [trendData, setTrendData] = useState<TrendData[]>([]);

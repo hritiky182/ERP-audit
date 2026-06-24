@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, useMemo } from "react";
 import { ShieldAlert, AlertTriangle, Activity } from "lucide-react";
 import { PageHeader } from "@/components/common/PageHeader";
@@ -31,13 +30,10 @@ import {
 import { RiskBadge, StatusBadge } from "@/components/common/RiskBadge";
 import { auditService } from "@/services/auditService";
 import type { SoDConflict } from "@/types";
+import { usePageTitle } from "../hooks/usePageTitle";
 
-export const Route = createFileRoute("/_app/sod")({
-  head: () => ({ meta: [{ title: "SoD Conflicts — CIS" }] }),
-  component: SoDPage,
-});
-
-function SoDPage() {
+export default function SoDPage() {
+  usePageTitle("SoD Conflicts — CIS");
   const [conflicts, setConflicts] = useState<SoDConflict[]>([]);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<SoDConflict | null>(null);

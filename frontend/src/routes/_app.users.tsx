@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState, useEffect } from "react";
 import { Users, UserX, ShieldAlert, UserCog } from "lucide-react";
 import { PageHeader } from "@/components/common/PageHeader";
@@ -32,13 +31,10 @@ import { Badge } from "@/components/ui/badge";
 import { RiskBadge, StatusBadge } from "@/components/common/RiskBadge";
 import { userService } from "@/services/userService";
 import type { User } from "@/types";
+import { usePageTitle } from "../hooks/usePageTitle";
 
-export const Route = createFileRoute("/_app/users")({
-  head: () => ({ meta: [{ title: "User Access Review — CIS" }] }),
-  component: UsersPage,
-});
-
-function UsersPage() {
+export default function UsersPage() {
+  usePageTitle("User Access Review — CIS");
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");

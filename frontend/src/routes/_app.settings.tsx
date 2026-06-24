@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/common/PageHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -7,13 +6,10 @@ import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
 import { toast } from "sonner";
+import { usePageTitle } from "../hooks/usePageTitle";
 
-export const Route = createFileRoute("/_app/settings")({
-  head: () => ({ meta: [{ title: "Settings — CIS" }] }),
-  component: SettingsPage,
-});
-
-function SettingsPage() {
+export default function SettingsPage() {
+  usePageTitle("Settings — CIS");
   return (
     <div className="space-y-6">
       <PageHeader

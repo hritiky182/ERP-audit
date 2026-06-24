@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, useMemo } from "react";
 import { GitPullRequestArrow, AlertCircle, Zap, Server } from "lucide-react";
 import { PageHeader } from "@/components/common/PageHeader";
@@ -22,16 +21,14 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { RiskBadge, StatusBadge } from "@/components/common/RiskBadge";
+import { Badge } from "@/components/ui/badge";
 import { auditService } from "@/services/auditService";
-import type { Change } from "@/types";
+import type { ERPChange } from "@/types";
+import { usePageTitle } from "../hooks/usePageTitle";
 
-export const Route = createFileRoute("/_app/changes")({
-  head: () => ({ meta: [{ title: "Change Management — CIS" }] }),
-  component: ChangesPage,
-});
-
-function ChangesPage() {
-  const [changes, setChanges] = useState<Change[]>([]);
+export default function ChangesPage() {
+  usePageTitle("Change Management — CIS");
+  const [changes, setChanges] = useState<ERPChange[]>([]);
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");
   const [riskFilter, setRiskFilter] = useState("all");
@@ -185,7 +182,7 @@ function ChangesPage() {
                   </TableCell>
                   <TableCell>
                     <div className="flex flex-wrap gap-1">
-                      {c.flags.map((f) => (
+                      {c.flags.map((f: string) => (
                         <Badge key={f} variant="secondary" className="text-[10px]">
                           {f}
                         </Badge>

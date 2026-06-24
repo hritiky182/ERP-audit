@@ -1,12 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { ShieldAlert } from "lucide-react";
+import { usePageTitle } from "../hooks/usePageTitle";
 
-export const Route = createFileRoute("/403")({
-  head: () => ({ meta: [{ title: "403 Forbidden — CIS" }] }),
-  component: ForbiddenPage,
-});
-
-function ForbiddenPage() {
+export default function ForbiddenPage() {
+  usePageTitle("403 Forbidden — CIS");
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">

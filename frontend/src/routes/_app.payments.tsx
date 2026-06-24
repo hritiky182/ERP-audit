@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, useMemo } from "react";
 import { CreditCard, AlertTriangle, Copy, ShieldAlert } from "lucide-react";
 import {
@@ -36,13 +35,10 @@ import {
 import { RiskBadge, StatusBadge } from "@/components/common/RiskBadge";
 import { paymentService } from "@/services/paymentService";
 import type { Payment } from "@/types";
+import { usePageTitle } from "../hooks/usePageTitle";
 
-export const Route = createFileRoute("/_app/payments")({
-  head: () => ({ meta: [{ title: "Payment Controls — CIS" }] }),
-  component: PaymentsPage,
-});
-
-function PaymentsPage() {
+export default function PaymentsPage() {
+  usePageTitle("Payment Controls — CIS");
   const [payments, setPayments] = useState<Payment[]>([]);
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");

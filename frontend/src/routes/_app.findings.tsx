@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState, useEffect } from "react";
 import { ClipboardList, CheckCircle2, AlertTriangle } from "lucide-react";
 import { PageHeader } from "@/components/common/PageHeader";
@@ -31,13 +30,10 @@ import {
 import { RiskBadge, StatusBadge } from "@/components/common/RiskBadge";
 import { findingsService } from "@/services/findingsService";
 import type { Finding } from "@/types";
+import { usePageTitle } from "../hooks/usePageTitle";
 
-export const Route = createFileRoute("/_app/findings")({
-  head: () => ({ meta: [{ title: "Audit Findings — CIS" }] }),
-  component: FindingsPage,
-});
-
-function FindingsPage() {
+export default function FindingsPage() {
+  usePageTitle("Audit Findings — CIS");
   const [findings, setFindings] = useState<Finding[]>([]);
   const [loading, setLoading] = useState(true);
   const [q, setQ] = useState("");

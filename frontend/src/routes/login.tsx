@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
+import { useNavigate, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ShieldCheck, Mail, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -8,13 +8,10 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent } from "@/components/ui/card";
 import { useAuth } from "../context/AuthContext";
 import { toast } from "sonner";
+import { usePageTitle } from "../hooks/usePageTitle";
 
-export const Route = createFileRoute("/login")({
-  head: () => ({ meta: [{ title: "Sign in — CIS" }] }),
-  component: LoginPage,
-});
-
-function LoginPage() {
+export default function LoginPage() {
+  usePageTitle("Sign in — CIS");
   const [email, setEmail] = useState("auditor@acme.com");
   const [password, setPassword] = useState("audit2026");
   const [remember, setRemember] = useState(true);
@@ -24,7 +21,7 @@ function LoginPage() {
 
   useEffect(() => {
     if (!isLoading && user) {
-      navigate({ to: "/dashboard" });
+      navigate("/dashboard");
     }
   }, [user, isLoading, navigate]);
 
@@ -34,7 +31,7 @@ function LoginPage() {
     try {
       await login(email);
       toast.success("Signed in successfully");
-      navigate({ to: "/dashboard" });
+      navigate("/dashboard");
     } catch (err) {
       toast.error("Failed to sign in");
     } finally {

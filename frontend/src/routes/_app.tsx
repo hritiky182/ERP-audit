@@ -1,21 +1,17 @@
-import { createFileRoute, Outlet, useNavigate } from "@tanstack/react-router";
+import { Outlet, useNavigate } from "react-router-dom";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { Topbar } from "@/components/layout/Topbar";
 import { Footer } from "@/components/layout/Footer";
 import { useAuth } from "../context/AuthContext";
 import { useEffect } from "react";
 
-export const Route = createFileRoute("/_app")({
-  component: AppLayout,
-});
-
-function AppLayout() {
+export default function AppLayout() {
   const { user, isLoading } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!isLoading && !user) {
-      navigate({ to: "/login" });
+      navigate("/login");
     }
   }, [user, isLoading, navigate]);
 
