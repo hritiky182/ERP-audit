@@ -140,10 +140,10 @@ export default function LoginPage() {
               </Button>
             </form>
 
-            <div className="mt-6 rounded-md border border-dashed border-border bg-muted/40 p-3 text-xs">
+            {/* <div className="mt-6 rounded-md border border-dashed border-border bg-muted/40 p-3 text-xs">
               <p className="font-medium text-foreground">Demo credentials</p>
               <p className="mt-1 text-muted-foreground">auditor@acme.com / audit2026</p>
-            </div>
+            </div> */}
           </CardContent>
         </Card>
       </div>
